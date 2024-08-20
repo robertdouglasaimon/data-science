@@ -3,20 +3,20 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from analise_de_notas import notas
 
-local_arquivo = r'D:/CURSOS ONLINE NUNCA APAGAR/CURSO CIENCIA DE DADOS ALURA NUNCA APAGAR/data-science/modulos/1.Data Science explorando e analisando dados/2.Analisando-os-dados/pratica/bases de dados/movies.csv'
-filmes = pd.read_csv(local_arquivo)
-filmes.head()
+# Carregar o dataset dos filmes
+filmes = pd.read_csv('https://raw.githubusercontent.com/alura-cursos/data-science-analise-exploratoria/main/Aula_0/ml-latest-small/movies.csv')
+filmes.columns = ["filmeId", "titulo", "generos"]
 
-# filmes = pd.read_csv('https://raw.githubusercontent.com/alura-cursos/data-science-analise-exploratoria/main/Aula_0/ml-latest-small/movies.csv')
-# filmes.columns = ["filmeId", "titulo", "generos"]
-# filmes.head()
-
-notas.head()
-
-notas.query('filmeId==2')['nota'].mean()
-
+# Calcular a média das notas por filme
 medias_por_filme = notas.groupby('filmeId')['nota'].mean()
-medias_por_filme.head()
 
-medias_por_filme.plot(kind='hist')
+# Exibir as primeiras linhas das médias
+print(medias_por_filme.head())
+
+# Opcional: Criar um gráfico das médias
+plt.figure(figsize=(10, 6))
+sns.histplot(medias_por_filme, bins=50, kde=True)
+plt.title('Distribuição das Médias por Filme')
+plt.xlabel('Média das Notas')
+plt.ylabel('Frequência')
 plt.show()
