@@ -3,7 +3,6 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from analise_de_notas import notas
 
-# Carregar o dataset dos filmes
 filmes = pd.read_csv('https://raw.githubusercontent.com/alura-cursos/data-science-analise-exploratoria/main/Aula_0/ml-latest-small/movies.csv')
 filmes.columns = ["filmeId", "titulo", "generos"]
 
