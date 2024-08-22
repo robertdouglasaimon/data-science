@@ -47,7 +47,5 @@ print(notas['nota'].describe())
 
 
 # Biblioteca e graficos que mostram visualmente como está distribuido esse valor. Como ver a mediana visualmente e não só em números. Usaremos a biblioteca seaborn atráves do "import seaborn as sns" usando a sigla "sns" para ativa-lá. Lembrando que é preciso instalar ela no terminal através do "pip install seaborn" e importar ela lá no topo com o "import seaborn as sns" para ai sim usar os comandos abaixo para gerar o gráfico.
-# sns.boxplot(notas['nota'])
-# plt.show()
-
-
+sns.boxplot(notas['nota'])
+plt.show()
