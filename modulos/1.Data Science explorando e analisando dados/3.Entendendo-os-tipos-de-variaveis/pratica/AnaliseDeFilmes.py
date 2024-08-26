@@ -27,7 +27,7 @@ tmdb.describe()
 tmdb.query('revenue < 500')
 print(tmdb.query('revenue < 500'))
 
-#------------------------------------------------------------------------------------------------------------------#
+#----------------------------------------------------------------------------------------------------------------#
 # Filtrando a coluna "original_language" para saber qual foi a linguagem mais usada em todos os titulos
 
 tmdb["original_language"].unique() # Puxa os valores ÚNICOS da tabela, nesse caso vai puxar todas as linguagens, no que diz respeito as linguagens usadas e não na quantidade.
