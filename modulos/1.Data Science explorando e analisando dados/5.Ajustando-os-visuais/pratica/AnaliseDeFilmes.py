@@ -91,5 +91,18 @@ plt.show()
 total_de_outros_filmes_por_lingua = tmdb.query("original_language != 'en' ")["original_language"].value_counts()
 total_de_outros_filmes_por_lingua.head()
 
-sns.countplot(data = tmdb.query("original_language != 'en' "), x = "original_language")
+plt.figure(figsize=(16, 8)) # Configura o tamanho do gráfico, mais informações na documentação do matplotlib.
+sns.countplot(data = 
+    tmdb.query("original_language != 'en' "), 
+    order = total_de_outros_filmes_por_lingua.index, # Ordena os dados (Do maior para o menor, ordem alfabetica, enfim.. Aqui a gente ordena como quiser, basta ver na documentação o "incremento de ordenação" após o "order", como nesse caso só queremos ordenar a quantidade, não precisou incremento.)
+    palette ="mako", # Paleta de cores usada para pintar as barras do gráfico. Também encontrado na documentação do seaborn, sempre que precisar olhar lá no site.
+    hue ="original_language", # Ativa a paleta de cores no gráfico, mas de forma solida e padrão, como vem na paleta.
+    hue_order = total_de_outros_filmes_por_lingua.index, # Ordena os dados pelas cores, sendo o mais claro a menor quantidade e as cores mais escuras as quantidades maiores.
+    stat="percent", # Exibe os dados por porcentagem, outros formatos também podem ser encontrados na documentação do seaborn.
+    x = "original_language") # Legenda do eixo horizontal do gráfico.
+
+plt.title('Distribuição da língua original nos filmes exceto em inglês')    
 plt.show()
+
+total_de_outros_filmes_por_lingua = tmdb.query("original_language != 'en' ")["original_language"].value_counts(normalize=True)
+total_de_outros_filmes_por_lingua.head()
