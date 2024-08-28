@@ -1,6 +1,9 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import numpy as np
+from analise_de_notas import notas
+
 
 planilha_de_filmes = r"D:\CURSOS ONLINE NUNCA APAGAR\CURSO CIENCIA DE DADOS ALURA NUNCA APAGAR\data-science\modulos\1.Data Science explorando e analisando dados\3.Entendendo-os-tipos-de-variaveis\pratica\bases de dados\tmdb_5000_movies.csv"
 
@@ -106,3 +109,66 @@ plt.show()
 
 total_de_outros_filmes_por_lingua = tmdb.query("original_language != 'en' ")["original_language"].value_counts(normalize=True)
 total_de_outros_filmes_por_lingua.head()
+
+# ------------------------------------------------------------------------------------------------------------- #
+
+# prompt:  Extraia as notas dos dois filmes em variaveis distintas.
+
+notas_do_toy_story = notas.query("filmeId==1")["nota"]
+notas_do_jumanji = notas.query("filmeId==2")["nota"]
+
+media_do_toy_story = notas_do_toy_story.mean()
+media_do_jumanji = notas_do_jumanji.mean()
+
+print(media_do_toy_story, media_do_jumanji)
+
+
+# prompt: Mesmo mas com a mediana
+
+notas_do_toy_story = notas.query("filmeId==1")["nota"]
+notas_do_jumanji = notas.query("filmeId==2")["nota"]
+
+media_do_toy_story = notas_do_toy_story.median()
+media_do_jumanji = notas_do_jumanji.median()
+
+print(media_do_toy_story, media_do_jumanji)
+
+filme1 = [2.5] * 10 + [3.5] * 10
+np.mean(filme1)
+
+
+# ---------------------------------------------------------------------------------- #
+#  Situação para analisar filmes com a mesma mediana, mas, com distribuição diferente de alguma forma.
+
+filme1 = [2.5] * 10 + [3.5] * 10
+filme2 = [5] * 10 + [1] * 10
+media_filme1 = np.mean(filme1) , np.median(filme1)  
+media_filme2 = np.mean(filme2) , np.median(filme2)
+
+print("Filme 1:")
+print("Média:", media_filme1)
+print("Mediana:", media_filme1)
+
+print("\nFilme 2:")
+print("Média:", media_filme2)
+print("Mediana:", media_filme2)
+
+# prompt: Faça um histograma do filme 1 e filme 2
+plt.title('Histograma das notas do filme 1 e filme 2')
+plt.hist(filme1)
+plt.hist(filme2)
+plt.show()
+
+# boxplot para comparar a distribuição
+plt.boxplot([filme1, filme2])
+plt.title('Boxplot das notas do filme 1 e filme 2')
+plt.show()
+
+filme0 = [3.0] * 20 
+np.std(filme0), np.std(filme1), np.std(filme2)
+
+plt.boxplot([notas_do_toy_story, notas_do_jumanji])
+plt.show()
+
+sns.boxplot(data=notas.query("filmeId in [1,2]"), x="filmeId",  y="nota")
+plt.show()
