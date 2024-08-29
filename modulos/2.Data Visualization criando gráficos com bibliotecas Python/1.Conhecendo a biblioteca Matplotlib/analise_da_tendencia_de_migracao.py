@@ -15,7 +15,7 @@ df = df.rename(columns={'Country' : 'País'})
 df = df.rename(columns={'Continent' : 'Continente'})
 df = df.rename(columns={'Region' : 'Região'})
 
-# Set o "Index" para ser o "País"
+# Seta o "Index" para ser o "País"
 df.set_index('País', inplace=True)
 # print(df)
 
