@@ -24,3 +24,12 @@
     Quais são os períodos com maior número de imigrantes nos dois países?
     Vamos lá?
 </p>
+
+<br>
+<br>
+
+<h2>Atividade Concluida</h2>
+<p>Segue abaixo a minha resolução para o problema</p>
+<a href="https://colab.research.google.com/drive/1DqVjmwDewP9mbsRCh_xsTPHcoO8xHe8Z#scrollTo=EkXYZBUY0p27">
+    <p>Resolução: Desafio 01</p>
+</a>
