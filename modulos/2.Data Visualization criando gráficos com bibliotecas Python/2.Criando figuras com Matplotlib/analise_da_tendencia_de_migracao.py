@@ -78,7 +78,7 @@ axs[1].set_xlabel('Brasil')
 axs[1].set_ylabel('Número de imigrantes')
 axs[1].grid(True) # Adiciona uma grade no gráfico.
 
-plt.show()
+# plt.show()
 
 dados_brasil.describe() # Usamos o describe para visualizar no formato de tabela e comparar as informações dos dados do gráfico de Boxplot, para garantir a certeza dos dados, de que eles são iguais.
 
