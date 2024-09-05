@@ -112,7 +112,7 @@ for ax in axs.flat: # Essa linha pega todos os subplots e faz com que o "loop" (
   ax.set_ylabel('Número de imigrantes') # Adiciona label em todos os gráficos
   ax.grid(True) # Adiciona tela ao gráfico.
   
-#---------------------------------------------------------------------------------------------------------------------------------------------#
+#-----------------------------------------------------------------------------------------------------------------------#
 # Comando criado para evitar descrepancia nos valores dos eixos Y de cada gráfico, e ajuda também na comparação mais precisa dos dados.
 # Essa dica é sempre boa de se manter e usar!
 
@@ -120,6 +120,6 @@ ymin = 0 # Determina o valor minimo do eixo Y
 ymax = 6000 # Determina o valor maximo do eixo Y
 for ax in axs.ravel(): # Essa linha pega todos os subplots e faz com que o "loop" (repetição) percorra TODOS os subplots dessa estrutura.
     ax.set_ylim(ymin, ymax)
-#---------------------------------------------------------------------------------------------------------------------------------------------#
+#-----------------------------------------------------------------------------------------------------------------------#
 
 plt.show()
