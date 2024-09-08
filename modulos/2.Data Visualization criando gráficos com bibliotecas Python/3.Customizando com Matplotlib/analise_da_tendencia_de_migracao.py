@@ -120,6 +120,84 @@ ymin = 0 # Determina o valor minimo do eixo Y
 ymax = 6000 # Determina o valor maximo do eixo Y
 for ax in axs.ravel(): # Essa linha pega todos os subplots e faz com que o "loop" (repetição) percorra TODOS os subplots dessa estrutura.
     ax.set_ylim(ymin, ymax)
+    
+# plt.show()    
 #-----------------------------------------------------------------------------------------------------------------------#
 
+
+#-Gráfico de Barras Horizontal com Destaque Colorido--------------------------------------------------------------------#
+
+# Criando um novo DATAFRAME só com os paises da America do Sul para criar o gráfico
+america_do_sul = df.query('Região == "South America"')
+america_do_sul
+
+# Ordena o DataFrame 'america_do_sul' em ordem crescente com base na coluna 'Total'.
+# 'by' especifica a coluna usada para a ordenação ('Total'), e 'ascending=True' indica que a ordenação deve ser em ordem crescente.
+# O resultado da ordenação é armazenado em 'america_do_sul_sorted'.
+america_do_sul_sorted = america_do_sul.sort_values(by='Total', ascending=True)
+
+# Inicializa uma lista vazia chamada 'cores' para armazenar as cores que serão usadas no gráfico de barras.
+cores = []
+
+# Itera sobre os índices do DataFrame 'america_do_sul_sorted'.
+for pais in america_do_sul_sorted.index:
+    # Verifica se o país é 'Brazil'. Se for, adiciona 'green' (verde) à lista de cores.
+    if pais == 'Brazil':
+        cores.append('green')
+    # Se não for 'Brazil', adiciona 'silver' (prata) à lista de cores.
+    else:
+        cores.append('silver')
+
+# Cria uma figura e um conjunto de eixos para o gráfico de barras horizontais.
+# 'figsize' define o tamanho da figura (12 de largura por 5 de altura).
+fig, ax = plt.subplots(figsize=(12, 5))
+
+# Cria um gráfico de barras horizontal ('barh'), utilizando o índice de 'america_do_sul_sorted' como rótulos (nomes dos países)
+# e a coluna 'Total' como os valores das barras. A cor de cada barra é definida pela lista 'cores'.
+ax.barh(america_do_sul_sorted.index, america_do_sul_sorted['Total'], color=cores)
+
+# Define o título do gráfico. 'loc' especifica a localização do título à esquerda e 'fontsize' define o tamanho da fonte.
+ax.set_title('América do Sul: Brasil foi o quarto país com mais imigrantes \n para o Canadá no perído de 1980 a 2013', loc='left', fontsize=18)
+
+# Define o rótulo do eixo x com o texto 'Número de imigrantes' e o tamanho da fonte.
+ax.set_xlabel('Número de imigrantes', fontsize=14)
+
+# Remove o rótulo do eixo y, mantendo-o vazio.
+ax.set_ylabel('')
+
+# Define o tamanho da fonte dos rótulos do eixo y.
+ax.yaxis.set_tick_params(labelsize=12)
+
+# Define o tamanho da fonte dos rótulos do eixo x.
+ax.xaxis.set_tick_params(labelsize=12)
+
+
+
+
+#----Esse "for" adiciona os valores numéricos ao lado de cada barra do gráfico de barras horizontal.---
+# Mas vamos destrinchar tudo:
+
+# 'enumerate' percorre a lista de valores da coluna 'Total' do DataFrame 'america_do_sul_sorted', 
+# retornando o índice (i) e o valor (v) de cada item.
+for i, v in enumerate(america_do_sul_sorted['Total']):
+
+    # Usa o método 'ax.text' para adicionar o texto com o valor (v) ao lado de cada barra.
+    # 'v + 20' determina a posição horizontal do texto, ligeiramente à direita da extremidade da barra.
+    # 'i' define a posição vertical do texto, correspondente ao índice de cada barra.
+    # 'str(v)' converte o valor numérico para string para exibição.
+    # 'color' define a cor do texto (preto neste caso).
+    # 'fontsize' define o tamanho da fonte do texto.
+    # 'ha' (horizontal alignment) alinha o texto à esquerda ('left') da posição especificada.
+    # 'va' (vertical alignment) alinha o texto ao centro ('center') da posição vertical da barra.
+    ax.text(v + 20, i, str(v), color='black', fontsize=10, ha='left', va='center')
+
+# Então o código limpo do "for" para adicionar valores numéricos ao lado de cada barra do gráfico fica assim:
+for i, v in enumerate(america_do_sul_sorted['Total']):
+  ax.text(v + 20, i, str(v), color='black', fontsize=10, ha='left', va='center')
+  
+  
+
+# Exibe o gráfico.
 plt.show()
+
+#-----------------------------------------------------------------------------------------------------------------------#
