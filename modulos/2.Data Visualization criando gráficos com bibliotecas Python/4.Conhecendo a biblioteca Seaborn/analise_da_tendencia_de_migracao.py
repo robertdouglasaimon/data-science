@@ -214,3 +214,83 @@ top_10 = df.sort_values('Total', ascending=False).head(10) # Ordena o DataFrame 
 
 print(top_10)
 
+
+
+# Gráfico de barras Seaborn -------------------------------------------------------------------------
+
+
+#Gráfico vertical-------------------------------------------------------
+
+# sns.barplot(data=top_10, x=top_10.index, y='Total') # Cria um gráfico de barras usando o Seaborn.
+# plt.show()
+
+# Gráfico horizontal ----------------------------------------------------
+
+#sns.barplot(data=top_10, y=top_10.index, x='Total', orient='h') # Cria um gráfico de barras horizontal usando o Seaborn.
+# plt.show()
+
+# Cria um gráfico de barras horizontal bartplot usando o Seaborn--------------------------------------
+
+# ax = sns.barplot(data=top_10, y=top_10.index, x='Total', orient='h') # Cria um gráfico de barras horizontal bartplot usando o Seaborn.
+# ax.set(
+#     title='Top 10 países com maior imigração para o Canadá 1980 \n a 2013',  # Define o título do gráfico.
+#     xlabel='Número de imigrantes',  # Define o rótulo do eixo x.
+#     ylabel=''  # Define o rótulo do eixo y.
+#     )
+# plt.show()
+
+#----------------------------------------------------------------------------------------------------------------#
+
+# GRAFICO DE PALETA SEABORN --------------------------------------
+
+def gerar_grafico_paleta(palette): 
+  fig,ax = plt.subplots(figsize=(8,4)) # Cria uma figura e um conjunto de eixos para o gráfico de barras horizontal.
+  # 'figsize' define o tamanho da figura (8 de largura por 4 de altura).
+  ax = sns.barplot(data=top_10, y=top_10.index, x='Total', orient='h', palette=palette)  # Cria um gráfico de barras horizontal usando o Seaborn.
+  ax.set_title('Países com maior imigração para o Canadá \n 1980 a 2013', loc='left', fontsize=16) # Coloca um titulo no gráfico e ajusta o tamanho da fonte.
+  ax.set_xlabel('Número de imigrantes', fontsize=14) # Insere uma label no eixo x.
+  ax.set_ylabel('') # Insere uma label no eixo y.
+
+  plt.show()
+  
+# TIPOS DE PALETA -----------------------------------------
+  # gerar_grafico_paleta('Blues_r')
+  # gerar_grafico_paleta('rocket')
+  # gerar_grafico_paleta('coolwarm')
+
+# ---------  PALETA CATEGORICA ----------- #
+gerar_grafico_paleta('tab10')
+plt.show()
+#----------------------------------------------------------------------------------------------------------------#
+
+
+#TIPOS DE TEMA PARA OS GRÁFICOS CATEGORICOS SEABORN--------------------------------------------------------------#
+
+# sns.set_theme(style='dark')  # Tema Dark - remove as grades e deixa o gráfico visualmente mais limpo e facil de se ler no geral.
+# gerar_grafico_paleta('tab10')
+
+# sns.set_theme(style='whitegrid') # Gráfico de aspecto minimalista, mas que ajuda facilmente a entender os valores inseridos nele atráves das barras.
+# gerar_grafico_paleta('tab10')
+
+# sns.set_theme(style='white') # Gráfico de aspecto minimalista, mas que ajuda facilmente a entender os valores inseridos nele atráves das barras.
+# gerar_grafico_paleta('tab10')
+
+sns.set_theme(style='ticks') # Gráfico de aspecto minimalista, mas que ajuda facilmente a entender os valores inseridos nele atráves das barras. Ele tem marcações que ajudam a entender os valores mais facilmente.
+gerar_grafico_paleta('tab10')
+plt.show()
+
+
+
+
+# COMO REMOVE A LINHA SUPERIOR E LATERAL DIREITA DO GRÁFICO ----------------------------------------------------
+fig, ax = plt.subplots(figsize = (8,4)) # Cria uma figura e um conjunto de eixos para o gráfico de barras horizontal.
+# 'figsize' define o tamanho da figura (8 de largura por 4 de altura).
+ax = sns.barplot(data=top_10, y=top_10.index, x='Total', orient='h', palette='tab10')  # Cria um gráfico de barras horizontal usando o Seaborn.
+
+ax.set_title('Países com maior imigração para o Canadá \n 1980 a 2013', loc='left', fontsize=18) # Coloca um titulo no gráfico e ajusta o tamanho da fonte.
+ax.set_xlabel('Número de imigrantes', fontsize=14)
+ax.set_ylabel('')
+
+sns.despine() # Remove a linha superior e a lateral direita do gráfico.
+
+plt.show()
