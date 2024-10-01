@@ -69,6 +69,7 @@ idade
   - Exemplos: `print`, `type`, etc.
 
 > Letras maiúsculas e minúsculas vão gerar diferentes variáveis. A varíavel `idade` é diferente de `Idade` que por sua vez também é diferente de `IDADE`:
+
 ``` Python
 idade = 1
 Idade = 2
