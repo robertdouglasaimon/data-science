@@ -1,0 +1,107 @@
+---
+title: "Lista de exercícios - Curso de R para DS"
+output: learnr::tutorial
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+## Aula 1
+
+### Criar tabelas a partir de vetores e matrizes
+
+
+#### Crie um vetor chamado `vetor_notas` com notas pares de 2 a 10:
+
+```{r vetor-notas, exercise=TRUE, exercise.eval=FALSE}
+# Seu código aqui
+```
+
+```{r vetor-notas-hint-1}
+# Dica: Utilizar a função c() (combine)
+
+vetor_notas <- c()
+```
+
+```{r vetor-notas-hint-2}
+# Solução: Adicionar os valores separados por vírgula dentro da função c()
+
+vetor_notas <- c(2, 4, 6, 8, 10)
+```
+
+#### Crie uma matriz 3x3 chamada `minha_matriz` com valores de 1 a 9, por linha, contendo 3 linhas:
+
+```{r matriz-exercicio, exercise=TRUE, exercise.eval=FALSE}
+# Seu código aqui
+```
+
+```{r matriz-exercicio-hint-1}
+# Dica: Utilizar a função matrix() com os argumentos necessários
+
+minha_matriz <- matrix(data = NA, nrow = 1, byrow = FALSE)
+```
+
+```{r matriz-exercicio-hint-2}
+# Solução: Usar um vetor numérico como dados, definir o "nrow" igual a 3, e o "byrow" como verdadeiro
+
+minha_matriz <- matrix(c(1, 2, 3, 4, 5, 6, 7, 8, 9), nrow = 3, byrow = TRUE)
+```
+
+### Criar variáveis
+
+
+```{r variaveis-quiz}
+quiz(
+  question("Qual é a maneira correta de criar uma variável chamada 'idade' com valor 25?",
+    answer("variavel <- 25"),
+    answer("idade = 25"),
+    answer("idade <- 25", correct = TRUE),
+    answer("25 -> idade"),
+    allow_retry = TRUE
+  )
+)
+```
+
+### Exibir os valores das variáveis
+
+```{r exibir-valores, echo = FALSE}
+question_checkbox(
+  "Quais dos comandos a seguir são usados para exibir o valor da variável 'resultado'?",
+  answer("print(resultado)", correct = TRUE),
+  answer("cat(resultado)", correct = TRUE),
+  answer("display(resultado)"),
+  answer("paste(resultado)", correct = TRUE),
+  answer("write(resultado)"),
+  random_answer_order = TRUE,
+  allow_retry = TRUE,
+  try_again = "Certifique-se de selecionar todos os comandos corretos!"
+)
+```
+
+### Nomear vetores e matrizes
+
+#### Nomeie as linhas e colunas da matriz de salários abaixo. Utilize os nomes "João", "Maria" e "Pedro" para as linhas e os nomes "Jan", "Fev" e "Mar" para as colunas: 
+
+```{r nomear-vetores, exercise = TRUE, exercise.blanks = "___"}
+matriz_salarios <- matriz(c(8200, 4400, 3800, 6500, 2600, 3500, 7100, 9000, 5200), nrow = 3, byrow = TRUE)
+
+```
+
+```{r nomear-vetores-hint-1}
+# Dica: Criar os vetores contendo os nomes das pessoas e dos meses
+
+nomes_linhas <- c("João", "Maria", "Pedro")
+nomes_colunas <- c("Jan", "Fev", "Mar")
+```
+
+```{r nomear-vetores-hint-2}
+# Solução: Aplicar as funções "rownames" e "colnames" para atribuir os vetores contendo os nomes das linhas e colunas
+
+rownames(matriz_salarios) <- nomes_linhas
+colnames(matriz_salarios) <- nomes_colunas
+```
+
