@@ -24,7 +24,32 @@ Segue abaixo a tabela que a Tech passou para trabalharmos:
 | João Costa      | 32    | 2460.80 | Não possui       | Sim             |
 | Fernanda Lima   | 27    | 4230.35 | \(31\) 8765-4321 | Sim             |
 
+RESOLUÇÃO EXERCICIO 1 CRIANDO A TABELA ⬇️ ------------------------------------------------------------
 
+```{r}
+ana_silva <- c('Ana Silva', 28, 6230.50, 'Não possui', TRUE)
+carlos_oliveira <- c('Carlos Oliveira', 35, 7500.75, '(11) 1234-5678', TRUE)
+maria_santos <- c('Maria Santos', 40, 8000.25, '(21) 9876-5432', TRUE)
+joao_costa <- c('Joao Costa', '32', 2460.80, 'Não possui', FALSE)
+fernanda_lima <- c('Fernanda Lima', 27, 4230.35, '(31) 8765-4321', TRUE)
+```
+
+```{r}
+colab_combinado <- c(ana_silva, carlos_oliveira, maria_santos, joao_costa, fernanda_lima)
+```
+
+```{r}
+matriz_colab <- matrix(colab_combinado, nrow = 5, byrow = TRUE)
+
+```
+
+```{r}
+rownames(matriz_colab) <- c('Colaboradora Ana', 'Colaborador Carlos Oliveira', 'Colaboradora Maria Santos', 'Colaborador Joao Costa', 'Colaboradora Fernanda Lima')
+
+colnames(matriz_colab) <- c('Nome', 'Idade', 'Salario', 'Telefone', 'Trabalho Remoto')
+
+matriz_colab
+```
 
 ## Aula 2 - Manipulando os dados
 
@@ -69,12 +94,133 @@ colnames(matriz_vendas) <- meses
 matriz_vendas
 ```
 
+-   Entendendo como acessar os elementos na prática:
+
+    ```{r}
+    vendas_jan 
+
+    ```
+
+    ```{r}
+    vendas_jan[3]
+    # Maior valor desse vetor
+    ```
+
+    ```{r}
+    # Menor valor desse vetor
+    vendas_jan[4]
+    ```
+
+    ```{r}
+
+    # Utilizando ID do atributo para puxar todos os seus dados.
+    # Obs: Essa estrutura [4, ] diz que: Você quer a 4º linha da tabela e o espaço vazio " , ] " quer dizer que você que todos os atributos de todas as colunas ligadas esse ID. No caso desse exemplo, todos os valores de todos os meses.
+
+    matriz_vendas[4, ]
+    ```
+
+    ```         
+    ```
+
+    ```{r}
+    # Utilizando o ATRIBUTO para puxar todos os seus dados.
+    # Obs: Essa estrutura ['Luiz Felipe', ] diz que: Você quer especificamente o atributo 'Luiz Felipe' da tabela e o espaço vazio " , ] " quer dizer que você quer TODOS os atributos de todas as colunas ligadas esse atributo. No caso desse exemplo, todos os valores de todos os meses.
+    matriz_vendas['Luiz Felipe', ]
+    ```
+
+    ```{r}
+
+    ```
+
 Vamos tentar descobrir o seguinte:
 
 -   Qual colaborador teve o maior faturamento nas vendas?
 
 -   Qual mês teve maior faturamento?
 
+    ```{r}
+    # Resolvendo a atividade:
+
+
+    # Calculando o maior faturamento entre os colaboradores:
+    rowSums(matriz_vendas)
+    ```
+
+    ```{r}
+    # Calculando qual mês teve o maior faturamento:
+    colSums(matriz_vendas)
+    ```
+
+    ```{r}
+    # Adicionando mais uma coluna e mais uma linha na tabela de vendas para mostrar o total de vendas e faturamento na tabela principal:
+
+
+    # Criando primeiro a coluna total_colab para os colaboradores:
+    total_colab <- rowSums(matriz_vendas)
+    matriz_total_colab <- cbind(matriz_vendas, total_colab)
+    matriz_total_colab
+    ```
+
+    ```{r}
+    # Criando a coluna total_meses para os meses:
+    total_meses <- colSums(matriz_vendas)
+    matriz_total_meses <- rbind(matriz_vendas, total_meses)
+    matriz_total_meses
+    ```
+
+    # EXERCICIO \#
+
+    Suponha que você esteja trabalhando com dados de temperatura média mensal de diversas cidades ao redor do mundo, armazenados em uma matriz no R. Cada linha representa um trimestre do ano, e cada coluna representa uma cidade específica. O objetivo é realizar operações de análise e extração de informações nessa matriz.
+
+    Abaixo temos o código para criar a matriz:
+
+    ```{r}
+
+    # Criando a matriz de temperaturas
+    temperaturas <- matrix(c(25, 30, 22, 28, 18, 20, 15, 22, 28, 32, 30, 35, 10, 15, 8, 12, 28, 25, 20, 22), 
+                           nrow = 4, ncol = 5, byrow = TRUE)
+
+    # Atribuindo nomes às linhas
+    rownames(temperaturas) <- c('1 Tri', '2 Tri', '3 Tri', '4 Tri')
+
+    # Atribuindo nomes às colunas
+    colnames(temperaturas) <- c('SP', 'BA', 'PA', 'MG', 'RS')
+
+    # Exibindo a matriz
+    print(temperaturas)
+
+    ```
+
+    Considerando essa matriz, gostaria de realizar as seguintes seleções:
+
+    -   Temperatura de SP ao longo de todos os trimestres do ano;
+
+    -   Temperatura do 2º trimestre de todas as cidades;
+
+    -   Temperatura de MG no 3º trimestre.
+
+    ```{r}
+
+    # Resolvendo a atividade: 
+
+    temperaturas[1:4, 'SP']
+    temperaturas[2, ]
+    temperaturas['3 Tri', 4]
+    ```
+
+    # Atribuindo nomes às linhas
+
+    rownames(temperaturas) \<- c('1 Tri', '2 Tri', '3 Tri', '4 Tri')
+
+    # Atribuindo nomes às colunas
+
+    colnames(temperaturas) \<- c('SP', 'BA', 'PA', 'MG', 'RS')
+
+    # Exibindo a matriz
+
+    print(temperaturas)
+
+    \`\`\`
 
 ## Aula 3 - Estruturas condicionais e de repetição
 
@@ -108,7 +254,6 @@ A partir dessa matriz, vamos buscar descobrir o seguinte:
 -   Aplicar desconto de 10% em todos os produtos do estoque.
 
 -   Descobrir qual o produto mais vendido.
-
 
 ## Aula 4 - Funções matemáticas e estatísticas
 
@@ -144,8 +289,6 @@ colnames(dados_vendas) <- c("Preco", "Quantidade", "Receita")
 dados_vendas
 ```
 
-
-
 ## Aula 5 - Fatores
 
 ### Projeto da aula
@@ -161,4 +304,3 @@ names(status_entrega) <- nomes_produtos
 
 status_entrega
 ```
-

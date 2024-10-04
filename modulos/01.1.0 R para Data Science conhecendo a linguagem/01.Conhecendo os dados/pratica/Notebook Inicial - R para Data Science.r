@@ -2,48 +2,50 @@
 
 # #### Projeto do curso
 
-# # Nós estamos trabalhando em um projeto de uma empresa de People Analytics chamada Tech Safe.
+# # Nós estamos trabalhando em um projeto de uma empresa de People Analytics chamada Tech Safe. # nolint
 
-# # O nosso objetivo principal será realizar uma análise exploratória e responder perguntas levantadas pela Tech Safe.
+# # O nosso objetivo principal será realizar uma análise exploratória e responder perguntas levantadas pela Tech Safe. # nolint
 
-# # Ao longo do curso iremos responder diversas perguntas sobre os dados fornecidos pela empresa.
+# # Ao longo do curso iremos responder diversas perguntas sobre os dados fornecidos pela empresa. # nolint
 
-# # Notebook Inicial - R para Data SciencePara isso, vamos utilizar a linguagem de programação R.
+# # Notebook Inicial - R para Data SciencePara isso, vamos utilizar a linguagem de programação R.  # nolint
 
 
 
 
 # ### Projeto da aula
-# 1 - col A primeira tabela que vamos criar, será a de Colaboradores. Nessa tabela, teremos informações como: Nome, Idade, Salário, Telefone Fixo e Trabalho Remoto.
+# 1 - col A primeira tabela que vamos criar, será a de Colaboradores.
+# Nessa tabela, teremos informações como: Nome, Idade, Salário, Telefone Fixo e
+# Trabalho Remoto.
 
 # # Segue abaixo a tabela que a Tech passou para trabalharmos:
 
-# # | Nome            | Idade | Salário | Telefone Fixo    | Trabalho Remoto |
-# # |-----------------|-------|---------|------------------|-----------------|
-# # | Ana Silva       | 28    | 6230.50 | Não possui       | Sim             |
-# # | Carlos Oliveira | 35    | 7500.75 | \(11\) 1234-5678 | Sim             |
-# # | Maria Santos    | 40    | 8000.25 | \(21\) 9876-5432 | Não             |
-# # | João Costa      | 32    | 2460.80 | Não possui       | Sim             |
-# # | Fernanda Lima   | 27    | 4230.35 | \(31\) 8765-4321 | Sim             |
+# # | Nome            | Idade | Salário | Telefone Fixo    | Trabalho Remoto | # nolint
+# # |-----------------|-------|---------|------------------|-----------------| # nolint
+# # | Ana Silva       | 28    | 6230.50 | Não possui       | Sim             | # nolint
+# # | Carlos Oliveira | 35    | 7500.75 | \(11\) 1234-5678 | Sim             | # nolint
+# # | Maria Santos    | 40    | 8000.25 | \(21\) 9876-5432 | Não             | # nolint
+# # | João Costa      | 32    | 2460.80 | Não possui       | Sim             | # nolint
+# # | Fernanda Lima   | 27    | 4230.35 | \(31\) 8765-4321 | Sim             | # nolint
 
 
-# RESOLVENDO O EXERCICIO 1 - CRIANDO A TABELA  ⬇️-----------------------------------------------------------------
-ana_silva <- c('Ana Silva', 28, 6230.50, 'Não possui', TRUE)
-carlos_oliveira <- c('Carlos Oliveira', 35, 7500.75, '(11) 1234-5678', TRUE)
-maria_santos <- c('Maria Santos', 40, 8000.25, '(21) 9876-5432', TRUE)
-joao_costa <- c('Joao Costa', '32', 2460.80, 'Não possui', FALSE)
-fernanda_lima <- c('Fernanda Lima', 27, 4230.35, '(31) 8765-4321', TRUE)
+# RESOLVENDO O EXERCICIO 1 - CRIANDO A TABELA  -------------
+ana_silva <- c('Ana Silva', 28, 6230.50, 'Não possui', TRUE) # nolint
+carlos_oliveira <- c('Carlos Oliveira', 35, 7500.75, '(11) 1234-5678', TRUE)# nolint
+maria_santos <- c('Maria Santos', 40, 8000.25, '(21) 9876-5432', TRUE) # nolint
+joao_costa <- c('Joao Costa', '32', 2460.80, 'Não possui', FALSE) # nolint
+fernanda_lima <- c('Fernanda Lima', 27, 4230.35, '(31) 8765-4321', TRUE) # nolint
 
-colab_combinado <- c(ana_silva, carlos_oliveira, maria_santos, joao_costa, fernanda_lima)
+colab_combinado <- c(ana_silva, carlos_oliveira, maria_santos, joao_costa, fernanda_lima) # nolint 
 
 matriz_colab <- matrix(colab_combinado, nrow = 5, byrow = TRUE)
 
-rownames(matriz_colab) <- c('Colaboradora Ana', 'Colaborador Carlos Oliveira', 'Colaboradora Maria Santos', 'Colaborador Joao Costa', 'Colaboradora Fernanda Lima')
+rownames(matriz_colab) <- c('Colaboradora Ana', 'Colaborador Carlos Oliveira', 'Colaboradora Maria Santos', 'Colaborador Joao Costa', 'Colaboradora Fernanda Lima') # nolint
 
-colnames(matriz_colab) <- c('Nome', 'Idade', 'Salario', 'Telefone', 'Trabalho Remoto')
+colnames(matriz_colab) <- c('Nome', 'Idade', 'Salario', 'Telefone', 'Trabalho Remoto') # nolint
 
 print(matriz_colab)
-# ----------------------------------------------------------------------------------------------------------------
+# -------------------------------------------
 
 
 
@@ -55,17 +57,17 @@ print(matriz_colab)
 
 # ```{r}
 # # Vetor com valores das vendas
-# vendas_jan <- c(20, 18, 25, 16, 23)
-# vendas_fev <- c(15, 20, 22, 18, 19)
-# vendas_mar <- c(25, 23, 20, 17, 21)
-# vendas_abr <- c(18, 15, 19, 20, 24)
-# vendas_mai <- c(22, 25, 21, 15, 18)
-# vendas_jun <- c(21, 22, 19, 17, 20)
+# vendas_jan <- c(20, 18, 25, 16, 23) # nolint
+# vendas_fev <- c(15, 20, 22, 18, 19) # nolint
+# vendas_mar <- c(25, 23, 20, 17, 21) # nolint
+# vendas_abr <- c(18, 15, 19, 20, 24) # nolint
+# vendas_mai <- c(22, 25, 21, 15, 18) # nolint
+# vendas_jun <- c(21, 22, 19, 17, 20) # nolint # nolint
 # ```
 
 # ```{r}
 # # Nomes das pessoas
-# pessoas <- c("Pedro Santos", "Carla Nunes", "Maria Eduarda", "Luiz Felipe", "Julio Costa")
+# pessoas <- c("Pedro Santos", "Carla Nunes", "Maria Eduarda", "Luiz Felipe", "Julio Costa") # nolint
 
 # # Nomes dos meses
 # meses <- c("Janeiro", "Fevereiro", "Marco", "Abril", "Maio", "Junho")
