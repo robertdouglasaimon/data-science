@@ -24,7 +24,32 @@ Segue abaixo a tabela que a Tech passou para trabalharmos:
 | João Costa      | 32    | 2460.80 | Não possui       | Sim             |
 | Fernanda Lima   | 27    | 4230.35 | \(31\) 8765-4321 | Sim             |
 
+RESOLUÇÃO EXERCICIO 1 CRIANDO A TABELA ⬇️ ------------------------------------------------------------
 
+```{r}
+ana_silva <- c('Ana Silva', 28, 6230.50, 'Não possui', TRUE)
+carlos_oliveira <- c('Carlos Oliveira', 35, 7500.75, '(11) 1234-5678', TRUE)
+maria_santos <- c('Maria Santos', 40, 8000.25, '(21) 9876-5432', TRUE)
+joao_costa <- c('Joao Costa', '32', 2460.80, 'Não possui', FALSE)
+fernanda_lima <- c('Fernanda Lima', 27, 4230.35, '(31) 8765-4321', TRUE)
+```
+
+```{r}
+colab_combinado <- c(ana_silva, carlos_oliveira, maria_santos, joao_costa, fernanda_lima)
+```
+
+```{r}
+matriz_colab <- matrix(colab_combinado, nrow = 5, byrow = TRUE)
+
+```
+
+```{r}
+rownames(matriz_colab) <- c('Colaboradora Ana', 'Colaborador Carlos Oliveira', 'Colaboradora Maria Santos', 'Colaborador Joao Costa', 'Colaboradora Fernanda Lima')
+
+colnames(matriz_colab) <- c('Nome', 'Idade', 'Salario', 'Telefone', 'Trabalho Remoto')
+
+matriz_colab
+```
 
 ## Aula 2 - Manipulando os dados
 
@@ -69,12 +94,145 @@ colnames(matriz_vendas) <- meses
 matriz_vendas
 ```
 
+-   Entendendo como acessar os elementos na prática:
+
+    ```{r}
+    vendas_jan 
+
+    ```
+
+    ```{r}
+    vendas_jan[3]
+    # Maior valor desse vetor
+    ```
+
+    ```{r}
+    # Menor valor desse vetor
+    vendas_jan[4]
+    ```
+
+    ```{r}
+
+    # Utilizando ID do atributo para puxar todos os seus dados.
+    # Obs: Essa estrutura [4, ] diz que: Você quer a 4º linha da tabela e o espaço vazio " , ] " quer dizer que você que todos os atributos de todas as colunas ligadas esse ID. No caso desse exemplo, todos os valores de todos os meses.
+
+    matriz_vendas[4, ]
+    ```
+
+    ```         
+    ```
+
+    ```{r}
+    # Utilizando o ATRIBUTO para puxar todos os seus dados.
+    # Obs: Essa estrutura ['Luiz Felipe', ] diz que: Você quer especificamente o atributo 'Luiz Felipe' da tabela e o espaço vazio " , ] " quer dizer que você quer TODOS os atributos de todas as colunas ligadas esse atributo. No caso desse exemplo, todos os valores de todos os meses.
+    matriz_vendas['Luiz Felipe', ]
+    ```
+
+    ```{r}
+
+    ```
+
 Vamos tentar descobrir o seguinte:
 
 -   Qual colaborador teve o maior faturamento nas vendas?
 
 -   Qual mês teve maior faturamento?
 
+    ```{r}
+    # Resolvendo a atividade:
+
+
+    # Calculando o maior faturamento entre os colaboradores:
+    rowSums(matriz_vendas)
+    ```
+
+    ```{r}
+    # Calculando qual mês teve o maior faturamento:
+    colSums(matriz_vendas)
+    ```
+
+    ```{r}
+    # Adicionando mais uma coluna e mais uma linha na tabela de vendas para mostrar o total de vendas e faturamento na tabela principal:
+
+
+    # Criando primeiro a coluna total_colab para os colaboradores:
+    total_colab <- rowSums(matriz_vendas)
+    matriz_total_colab <- cbind(matriz_vendas, total_colab)
+    matriz_total_colab
+    ```
+
+    ```{r}
+    # Criando a coluna total_meses para os meses:
+    total_meses <- colSums(matriz_vendas)
+    matriz_total_meses <- rbind(matriz_vendas, total_meses)
+    matriz_total_meses
+    ```
+
+    # EXERCICIO \#
+
+    Suponha que você esteja trabalhando com dados de temperatura média mensal de diversas cidades ao redor do mundo, armazenados em uma matriz no R. Cada linha representa um trimestre do ano, e cada coluna representa uma cidade específica. O objetivo é realizar operações de análise e extração de informações nessa matriz.
+
+    Abaixo temos o código para criar a matriz:
+
+    ```{r}
+
+    # Criando a matriz de temperaturas
+    temperaturas <- matrix(c(25, 30, 22, 28, 18, 20, 15, 22, 28, 32, 30, 35, 10, 15, 8, 12, 28, 25, 20, 22), 
+                           nrow = 4, ncol = 5, byrow = TRUE)
+
+    # Atribuindo nomes às linhas
+    rownames(temperaturas) <- c('1 Tri', '2 Tri', '3 Tri', '4 Tri')
+
+    # Atribuindo nomes às colunas
+    colnames(temperaturas) <- c('SP', 'BA', 'PA', 'MG', 'RS')
+
+    # Exibindo a matriz
+    print(temperaturas)
+
+    ```
+
+    Considerando essa matriz, gostaria de realizar as seguintes seleções:
+
+    -   Temperatura de SP ao longo de todos os trimestres do ano;
+
+    -   Temperatura do 2º trimestre de todas as cidades;
+
+    -   Temperatura de MG no 3º trimestre.
+
+    ```{r}
+
+    # Resolvendo a atividade: 
+
+    temperaturas[1:4, 'SP']
+    temperaturas[2, ]
+    temperaturas['3 Tri', 4]
+    ```
+
+    # Atribuindo nomes às linhas
+
+    rownames(temperaturas) \<- c('1 Tri', '2 Tri', '3 Tri', '4 Tri')
+
+    ```{r}
+    rownames(temperaturas) <- c('1 Tri', '2 Tri', '3 Tri', '4 Tri')
+    ```
+
+    # Atribuindo nomes às colunas
+
+    colnames(temperaturas) \<- c('SP', 'BA', 'PA', 'MG', 'RS')
+
+    ```{r}
+    colnames(temperaturas) <- c('SP', 'BA', 'PA', 'MG', 'RS')
+    ```
+
+    # Exibindo a matriz
+
+    print(temperaturas)
+
+    ```{r}
+    print(temperaturas)
+    ```
+
+    \`\`\`
 
 ## Aula 3 - Estruturas condicionais e de repetição
 
@@ -92,7 +250,7 @@ preco_estoque <- c(preco, qtd_estoque)
 matriz_estoque <- matrix(preco_estoque, ncol = 2)
 
 rownames(matriz_estoque) <- c('Notebook', 'Tablet', 'Monitor', 'Smartphone', 'Headset')
-colnames(matriz_estoque) <- c('Produto', 'Estoque')
+colnames(matriz_estoque) <- c('Valor unitario', 'Estoque')
 
 matriz_estoque
 ```
@@ -101,14 +259,101 @@ A partir dessa matriz, vamos buscar descobrir o seguinte:
 
 -   Calcular o valor total em estoque.
 
+    ```{r}
+    # Valor total em estoque
+    total_estoque <- matriz_estoque[ , 1] * matriz_estoque[ , 2]
+    total_estoque
+
+    ```
+
+    ```{r}
+    # Adicionando o valor total a matriz:
+
+    matriz_estoque <- cbind(matriz_estoque, total_estoque)
+    matriz_estoque
+
+    ```
+
 -   Identificar produtos com estoque baixo (menos de 15 unidades).
+
+    ```{r}
+    estoque_baixo <- matriz_estoque[,2] < 15
+    matriz_estoque[estoque_baixo, ]
+
+    ```
 
 -   Classificar o valor total em estoque em alto ou baixo.
 
+    ```{r}
+    # Separando o valor total em estoque e especificando a coluna " total_estoque":
+
+     total_somado <- colSums(matriz_estoque)
+     
+     total_somado[3]
+
+
+    ```
+
+    ```{r}
+
+    # Usando a condicional para responder a pergunta proposta:
+
+    if(total_somado[3] > 3000) {
+      paste('Total em estoque é alto. Valor total:', total_estoque[3])
+    } else {
+      paste('O valor total em estoque está abaixo de 3000. Valor total:', total_estoque[3])
+    }
+
+    ```
+
 -   Aplicar desconto de 10% em todos os produtos do estoque.
+
+    ```{r}
+
+    # Usando o laço FOR para percorrer por toda a tabela para aplicar o desconto de 10% a todos os produtos do estoque:
+
+    for(i in 1:nrow(matriz_estoque)) {
+      matriz_estoque[i,1] <- matriz_estoque[i,1] * 0.9
+    }
+
+    matriz_estoque
+
+    ```
 
 -   Descobrir qual o produto mais vendido.
 
+    ```{r}
+
+    # Usando a estrutura de repetição WHILE para criar uma condição de parada dinâmica, especificando ao programa até que quantidade ele deve parar de repetir, que no caso aqui dessa atividadem escolhemos que será 30:
+
+    indice_mais_vendido <- 0
+    quantidade_mais_vendida <- 0
+    i <- 1
+    ```
+
+    ```{r}
+    while (i <= nrow(matriz_estoque) & quantidade_mais_vendida < 30) {
+      if(matriz_estoque[i, 2] > quantidade_mais_vendida) {
+        quantidade_mais_vendida <- matriz_estoque[i, 2]
+        indice_mais_vendido <- i
+      }
+      i <- i + 1
+    }
+
+    cat('Produto mais vendido: ', indice_mais_vendido)
+    cat('\nTotal em estoque: ', matriz_estoque[indice_mais_vendido, 2])
+    ```
+
+    ```{r}
+    matriz_estoque
+
+    ```
+
+```{r}
+vendas_diarias <- c(1200, 800, 1500, 900, 1100, 600, 1700)
+limite_referencia <- 1000
+
+```
 
 ## Aula 4 - Funções matemáticas e estatísticas
 
@@ -117,14 +362,6 @@ A partir dessa matriz, vamos buscar descobrir o seguinte:
 Vamos criar uma nova matriz de vendas. Dessa vez, vamos incluir a receita das vendas na matriz.
 
 A partir dessa matriz, vamos responder às seguintes :
-
--   Quantos produtos com preço acima de 600 foram vendidos?
-
--   Qual a receita média das vendas?
-
--   Existe uma diferença muito grande entre a média e a mediana das receitas?
-
--   Qual o produto mais caro e qual o mais barato?
 
 Primeiramente, vamos criar a matriz:
 
@@ -144,7 +381,89 @@ colnames(dados_vendas) <- c("Preco", "Quantidade", "Receita")
 dados_vendas
 ```
 
+-   Quantos produtos com preço acima de 600 foram vendidos?
 
+    ```{r}
+    # Separando apenas os produtos que tem valor acima de 600:
+    dados_vendas[dados_vendas[ ,1] > 600, ]
+
+    ```
+
+    ```{r}
+    # Atribuindo a operação anterior a "dados_filtrados" e somando todos os valores de "Quantidade" usando a função SUM e atribuindo a uma nova váriavel:
+    dados_filtrados <- dados_vendas[dados_vendas[ ,1] > 600, ]
+
+    qtd_filtrado <- sum(dados_filtrados[, 2])
+
+    qtd_filtrado
+    ```
+
+-   Qual a receita média das vendas?
+
+    ```{r}
+
+    # Dividindo o valor total pela quantidade de produtos vendidos:
+
+    qtd_total <- sum(dados_vendas[ ,2])
+
+    resultado_porcentagem <- (qtd_filtrado / qtd_total) * 100
+
+    resultado_porcentagem
+    ```
+
+    ```{r}
+    # Usando round para transformar o resultado decimal em um número inteiro:
+    round(resultado_porcentagem)
+    ```
+
+    ```         
+    ```
+
+-   Existe uma diferença muito grande entre a média e a mediana das receitas?
+
+    ```{r}
+    dados_vendas[ , 3]
+
+    ```
+
+    ```{r}
+    # Media de vendas dos produtos:
+    mean(dados_vendas[ , 3])
+    ```
+
+    ```{r}
+    # Mediana de vendas dos produtos:
+
+    median(dados_vendas[ , 3])
+
+    ```
+
+    ```         
+    ```
+
+-   Qual o produto mais caro e qual o mais barato?
+
+    ```{r}
+    # Coluna e posição do valor mais ALTO:
+    valor_maior <- which.max(dados_vendas[ , 1])
+    valor_maior
+    ```
+
+    ```{r}
+    # Agora vamos ver o valor do mais ALTO:
+    dados_vendas[valor_maior, 1]
+    ```
+
+    ```{r}
+    # Coluna e posição do valor MENOR:
+    valor_menor <- which.min(dados_vendas[ , 1])
+    valor_menor
+    ```
+
+    ```{r}
+    # Agora vamos ver o valor MENOR:
+    dados_vendas[valor_menor, 1]
+    ```
 
 ## Aula 5 - Fatores
 
@@ -161,4 +480,3 @@ names(status_entrega) <- nomes_produtos
 
 status_entrega
 ```
-
