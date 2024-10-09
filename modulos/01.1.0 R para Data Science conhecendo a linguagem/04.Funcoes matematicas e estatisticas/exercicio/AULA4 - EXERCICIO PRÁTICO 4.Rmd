@@ -1,13 +1,4 @@
----
-title: "Lista de exercícios - Curso de R para DS"
-output: learnr::tutorial
-runtime: shiny_prerendered
----
-
-```{r setup, include=FALSE}
-library(learnr)
-knitr::opts_chunk$set(echo = FALSE)
-```
+## - Atividade de Recapitulação do curso do modulo 1 ao 4 -
 
 ## Aula 1
 
@@ -15,91 +6,101 @@ knitr::opts_chunk$set(echo = FALSE)
 
 #### Crie um vetor chamado `vetor_notas` com notas pares de 2 a 10:
 
-```{r vetor-notas, exercise=TRUE, exercise.eval=FALSE}
-# Seu código aqui
-```
-
-```{r vetor-notas-hint-1}
+```{r}
 # Dica: Utilizar a função c() (combine)
 
 vetor_notas <- c()
 ```
 
-```{r vetor-notas-hint-2}
-# Solução: Adicionar os valores separados por vírgula dentro da função c()
+```{r}
+# Dica: Adicionar os valores separados por vírgula dentro da função c()
 
 vetor_notas <- c(2, 4, 6, 8, 10)
+vetor_notas
 ```
 
 #### Crie uma matriz 3x3 chamada `minha_matriz` com valores de 1 a 9, por linha, contendo 3 linhas:
 
-```{r matriz-exercicio, exercise=TRUE, exercise.eval=FALSE}
-# Seu código aqui
-```
-
-```{r matriz-exercicio-hint-1}
+```{r}
 # Dica: Utilizar a função matrix() com os argumentos necessários
 
 minha_matriz <- matrix(data = NA, nrow = 1, byrow = FALSE)
+minha_matriz
 ```
 
-```{r matriz-exercicio-hint-2}
+```{r}
 # Solução: Usar um vetor numérico como dados, definir o "nrow" igual a 3, e o "byrow" como verdadeiro
 
 minha_matriz <- matrix(c(1, 2, 3, 4, 5, 6, 7, 8, 9), nrow = 3, byrow = TRUE)
+minha_matriz
 ```
 
 ### Criar variáveis
 
-```{r variaveis-quiz}
-quiz(
-  question("Qual é a maneira correta de criar uma variável chamada 'idade' com valor 25?",
-    answer("variavel <- 25"),
-    answer("idade = 25"),
-    answer("idade <- 25", correct = TRUE),
-    answer("25 -> idade"),
-    allow_retry = TRUE
-  )
-)
+Qual é a maneira correta de criar uma variável chamada 'idade' com valor 25?"
+
+a)  "variavel \<- 25"
+
+b)  "idade = 25"
+
+c)  "idade \<- 25"
+
+d)  "25 -\> idade"
+
+```{r}
+# Insira aqui a resposta:
+
+# c):
+
+idade <- 25
+idade
 ```
 
 ### Exibir os valores das variáveis
 
-```{r exibir-valores, echo = FALSE}
-question_checkbox(
-  "Quais dos comandos a seguir são usados para exibir o valor da variável 'resultado'?",
-  answer("print(resultado)", correct = TRUE),
-  answer("cat(resultado)", correct = TRUE),
-  answer("display(resultado)"),
-  answer("paste(resultado)", correct = TRUE),
-  answer("write(resultado)"),
-  random_answer_order = TRUE,
-  allow_retry = TRUE,
-  try_again = "Certifique-se de selecionar todos os comandos corretos!"
-)
+Quais dos comandos a seguir são usados para exibir o valor da variável 'resultado'?
+
+a)  "print(resultado)"
+
+b)  "cat(resultado)"
+
+c)  "display(resultado)"
+
+d)  "paste(resultado)"
+
+e)  "write(resultado)"
+
+```{r}
+# Insira a resposta aqui:
+# Certifique-se de selecionar todos os comandos corretos!"
+
+# a, b e d:
+
+resultado <- c('Testando','a atividade','de print, cat e paste!')
+
+print(resultado)
+
+cat(resultado)
+
+paste(resultado)
+
 ```
 
 ### Nomear vetores e matrizes
 
 #### Nomeie as linhas e colunas da matriz de salários abaixo. Utilize os nomes "João", "Maria" e "Pedro" para as linhas e os nomes "Jan", "Fev" e "Mar" para as colunas:
 
-```{r nomear-vetores, exercise = TRUE, exercise.blanks = "___"}
-matriz_salarios <- matriz(c(8200, 4400, 3800, 6500, 2600, 3500, 7100, 9000, 5200), nrow = 3, byrow = TRUE)
+```{r}
+# Criar a matriz de salários
+matriz_salarios <- matrix(c(8200, 4400, 3800, 6500, 2600, 3500, 7100, 9000, 5200), nrow = 3, byrow = TRUE)
 
-```
+# Nomear as linhas e colunas
+rownames(matriz_salarios) <- c("João", "Maria", "Pedro")
+colnames(matriz_salarios) <- c("Jan", "Fev", "Mar")
 
-```{r nomear-vetores-hint-1}
-# Dica: Criar os vetores contendo os nomes das pessoas e dos meses
+# Exibir a matriz
+matriz_salarios
 
-nomes_linhas <- c("João", "Maria", "Pedro")
-nomes_colunas <- c("Jan", "Fev", "Mar")
-```
-
-```{r nomear-vetores-hint-2}
-# Solução: Aplicar as funções "rownames" e "colnames" para atribuir os vetores contendo os nomes das linhas e colunas
-
-rownames(matriz_salarios) <- nomes_linhas
-colnames(matriz_salarios) <- nomes_colunas
 ```
 
 ## Aula 2
@@ -108,19 +109,13 @@ colnames(matriz_salarios) <- nomes_colunas
 
 #### Considere o vetor `numeros` abaixo. Acesse o terceiro elemento do vetor.
 
-```{r indexacao-vetor, exercise=TRUE, exercise.eval=FALSE}
+```{r}
 numeros <- c(10, 20, 30, 40, 50)
-# Seu código aqui
+
 ```
 
-```{r indexacao-vetor-hint-1}
-# Dica: Adicionar índice numérico entre os colchetes
-
-numeros[___]
-```
-
-```{r indexacao-vetor-hint-2}
-# Solução: Utilizar índice numérico 3
+```{r}
+#  Utilizando índice numérico 3
 
 numeros[3]
 ```
@@ -176,17 +171,41 @@ tabela <- matrix(c(1, 2, 3, 4), nrow = 2, byrow = TRUE)
 
 #### Considere o vetor `nomes` abaixo. Escolha a opção correta para atribuir nomes aos elementos do vetor.
 
-```{r nomear-vetor-quiz}
-nomes <- c("Ana", "Bob", "Charlie", "David")
-quiz(
-  question("Como atribuir nomes aos elementos do vetor 'nomes'?",
-    answer("names(nomes) <- c('Ana', 'Bob', 'Charlie', 'David')", correct = TRUE),
-    answer("nomes.names <- c('Ana', 'Bob', 'Charlie', 'David')"),
-    answer("nomes <- c('Ana', 'Bob', 'Charlie', 'David'); nomes_names"),
-    answer("nomes <- c('Ana', 'Bob', 'Charlie', 'David'); names(nomes) <- nomes", correct = TRUE),
-    allow_retry = TRUE
-  )
-)
+```{r}
+nomes <- c('Ana', 'Bob', 'Charlie', 'David')
+nomes
+
+```
+
+Como atribuir nomes aos elementos do vetor 'names'?
+
+a)  "nomes(nomes) \<- c('Ana', 'Bob', 'Charlie', 'David')"
+
+b)  "nomes.nomes \<- c('Ana', 'Bob', 'Charlie', 'David')"
+
+c)  "nomes \<- c('Ana', 'Bob', 'Charlie', 'David'); nomes_names"
+
+d)  "nomes \<- c('Ana', 'Bob', 'Charlie', 'David'); names(nomes) \<- nomes"
+
+```{r}
+# Insira aqui a alternativa correta:
+
+# d) :
+nomes <- c('Ana', 'Bob', 'Charlie', 'David'); 
+names(nomes) <- nomes
+nomes
+
+```
+
+```{r}
+# Modificando de " nomes " para qualquer outra coisa:
+nomes <- c('Ana', 'Bob', 'Charlie', 'David')
+
+# Atribuir novos nomes aos elementos do vetor (novo nome para as colunas, sem ser usando colname):
+names(nomes) <- c('Pessoa1', 'Pessoa2', 'Pessoa3', 'Pessoa4')
+
+# Exibir o vetor com os novos nomes
+nomes
 ```
 
 ## Aula 3
@@ -195,36 +214,52 @@ quiz(
 
 #### Considere os vetores `a` e `b` abaixo. Crie um novo vetor chamado `resultado` que seja a soma de `a` e `b`, e em seguida, arredonde os valores para o número inteiro mais próximo.
 
-```{r operadores-aritmeticos, exercise=TRUE, exercise.eval=FALSE}
+```{r}
 a <- c(1.5, 2.7, 3.2, 4.8)
 b <- c(0.3, 1.1, 2.0, 1.5)
-# Seu código aqui
+
 ```
 
-```{r operadores-aritmeticos-hint-1}
+```{r}
 # Dica: Aplicar função sum() para somar os vetores a e b
 
 resultado <- sum(a, b)
+resultado
 ```
 
-```{r operadores-aritmeticos-hint-2}
+```{r}
 # Solução: Arredondar o resultado da soma através da função round()
 
 resultado <- round(sum(a, b))
+resultado
 ```
 
 ### Construção do IF
 
 #### Escolha a opção correta para a seguinte declaração condicional:
 
-```{r if-else-quiz}
-question("Qual é a forma correta de escrever uma estrutura IF-ELSE em R?",
-  answer("if (condicao) { codigo } else { outro_codigo }", correct = TRUE),
-  answer("if (condicao) { codigo } else if { outro_codigo }", message = 'A condicional else if deve vir antes de else'),
-  answer("else if (condicao) { codigo } else { outro_codigo }", message = 'A condicional deve começar com if'),
-  answer("else (condicao) { codigo } if { outro_codigo }", message = 'A condicional else deve vir depois de if e não antes'),
-  allow_retry = TRUE
-)
+Qual é a forma correta de escrever uma estrutura IF-ELSE em R?
+
+a)  "if (condicao) { codigo } else { outro_codigo }"
+
+"b) if (condicao) { codigo } else if { outro_codigo }"
+
+c)  "else if (condicao) { codigo } else { outro_codigo }"
+
+d)  "else (condicao) { codigo } if { outro_codigo }"
+
+```{r}
+# Resposta
+
+# a):
+
+if (condicao) {
+  codigo
+} else {
+  outro_codigo
+}
+
+
 ```
 
 ### Operadores lógicos
@@ -279,40 +314,18 @@ for (i in 1:10) {
 
 #### Crie um loop while que calcula as vendas diárias de produtos. O loop deve continuar enquanto o total de vendas for menor que 1000 ou até que os elementos do vetor acabem.
 
-```{r while-loop-exercicio, exercise=TRUE, exercise.eval=FALSE}
-vendas_diarias <- c(120, 80, 150, 180, 100, 120, 130, 220)
-total_vendas <- 0
-indice <- 1
-objetivo_vendas <- 1000
-
-while (condicao && condicao) {
-  # Seu código aqui
-}
-
-```
-
-```{r while-loop-exercicio-hint-1}
-# Dica: Condição verifica se o total alcançou o limite ou se as vendas acabaram
-
-vendas_diarias <- c(120, 80, 150, 180, 100, 120, 130, 220)
-total_vendas <- 0
-indice <- 1
-objetivo_vendas <- 1000
-
-while (total_vendas < objetivo_vendas && indice <= length(vendas_diarias)) {
-  # Seu código aqui
-}
-
-print(total_vendas)
-```
-
-```{r while-loop-exercicio-hint-2}
+```{r}
 # Solução: Condição verifica se o total alcançou o limite ou se as vendas acabaram
 
 vendas_diarias <- c(120, 80, 150, 180, 100, 120, 130, 220)
 total_vendas <- 0
 indice <- 1
 objetivo_vendas <- 1000
+
+```
+
+```{r}
+# Looping "while" iterando:
 
 while (total_vendas < objetivo_vendas && indice <= length(vendas_diarias)) {
 
@@ -332,78 +345,104 @@ print(total_vendas)
 
 #### Crie um vetor chamado `notas` com as notas dos alunos (por exemplo, 7.5, 8.0, 6.2, 9.1). Utilize a função `round()` para arredondar as notas para o número inteiro mais próximo.
 
-```{r funcoes-matematicas, exercise=TRUE, exercise.eval=FALSE}
+```{r}
 # Seu código aqui
-```
-
-```{r funcoes-matematicas-hint-1}
-# Dica: Criar vetor de notas e vetor de notas arredondadas
-
 notas <- c(7.5, 8.0, 6.2, 9.1)
-notas_arredondadas <- 
+notas
 ```
 
-```{r funcoes-matematicas-hint-2}
+```{r}
 # Solução: Aplicar função round() no vetor de notas
 
 notas <- c(7.5, 8.0, 6.2, 9.1)
 notas_arredondadas <- round(notas)
+notas_arredondadas
 ```
 
 ### Funções estatísticas
 
 #### Escolha a opção correta para calcular a média das notas usando a função `mean()`.
 
-```{r mean-quiz}
-question("Qual das seguintes abordagens calcula a média de um vetor de notas no R?",
-  answer("average(notas)"),
-  answer("mean(notas)", correct = TRUE),
-  answer("calc.mean(notas)"),
-  answer("notas.mean()"),
-  allow_retry = TRUE
-)
+Qual das seguintes abordagens calcula a média de um vetor de notas no R?
+
+a) "average(notas)"
+
+b) "mean(notas)"
+
+c) "calc.mean(notas)"
+
+d) "notas.mean()"
+
+```{r}
+
+# Resposta:
+# b):
+
+mean(notas)
 ```
 
 ### Funções matemáticas
 
-```{r funcoes-matematicas-checkbox, echo = FALSE}
-question_checkbox(
-  "Quais das funções a seguir são funções matemáticas em R?",
-  answer("round()", correct = TRUE),
-  answer("mean()"),
-  answer("abs()", correct = TRUE),
-  answer("max()"),
-  answer("sqrt()", correct = TRUE),
-  random_answer_order = TRUE,
-  allow_retry = TRUE,
-  try_again = "Certifique-se de selecionar todas as funções corretas!"
-)
+Quais das funções a seguir são funções matemáticas em R?
+
+"Certifique-se de selecionar todas as funções corretas!"
+
+a) "round()"
+
+b) "mean()"
+
+c) "abs()"
+
+d) "max()"
+
+e) "sqrt()"
+
+f) todas as alternativas
+
+```{r}
+
+# Resposta:
+
+# f) todas as alternativas
 ```
 
 ### Funções estatísticas
 
 #### Dada a seguinte lista de números, calcule a mediana usando a função `median()`.
 
-```{r mediana-exercicio, exercise=TRUE, exercise.eval=FALSE}
+```{r}
 numeros <- c(12, 8, 15, 7, 10, 14, 9)
-# Seu código aqui
+numeros
 ```
 
-```{r mediana-exercicio-solution}
+```{r}
 numeros <- c(12, 8, 15, 7, 10, 14, 9)
 mediana_resultado <- median(numeros)
+mediana_resultado
+```
+
+```{r}
+numeros <- c(12, 8, 15, 7, 10, 14, 9)
+media_resultado <- mean(numeros)
+media_resultado
 ```
 
 ### Funções estatísticas
 
 #### Escolha a opção correta para encontrar o valor máximo na lista de números usando a função `max()`.
 
-```{r max-quiz}
-question("Qual é a forma correta de encontrar o valor máximo na lista de números?",
-  answer("max(numeros)", correct = TRUE),
-  answer("maximum(numeros)"),
-  answer("find.max(numeros)"),
-  answer("max_value(numeros)"),
-  allow_retry = TRUE
-)
+Qual é a forma correta de encontrar o valor máximo na lista de números?
+
+a) "max(numeros)"
+
+b) "maximum(numeros)"
+
+c) "find.max(numeros)"
+
+d) "max_value(numeros)"
+
+```{r}
+# Resposta:
+
+# a) "max(numeros)"
 ```
