@@ -1,0 +1,82 @@
+## Mão na massa: avaliando categorias
+
+Você está gerenciando dados de uma pesquisa de satisfação de clientes para um serviço de entrega de refeições. Cada cliente atribui uma nota de satisfação em uma escala de 1 a 5 para três categorias: pontualidade, qualidade da comida e atendimento.
+
+Os dados estão organizados da seguinte forma:
+
+```{r}
+pontualidade <- c(4, 5, 3, 4, 2)
+qualidade_comida <- c(5, 3, 4, 2, 5)
+atendimento <- c(3, 4, 5, 2, 4)
+
+fator_pontualidade <- factor(pontualidade, levels = 1:5, ordered = TRUE)
+fator_qualidade_comida <- factor(qualidade_comida, levels = 1:5, ordered = TRUE)
+fator_atendimento <- factor(atendimento, levels = 1:5, ordered = TRUE)
+
+fator_pontualidade
+fator_qualidade_comida
+fator_atendimento
+
+```
+
+Suas missões são as seguintes:
+
+1.  **Média de Avaliação para Cada Categoria:**
+
+    -   Calcule a média das avaliações para pontualidade, qualidade da comida e atendimento.
+
+        ```{r}
+        # Cálculo das médias arredondadas
+        media_pontualidade <- round(mean(as.numeric(fator_pontualidade)), 1)
+        media_qualidade_comida <- round(mean(as.numeric(fator_qualidade_comida)), 1)
+        media_atendimento <- round(mean(as.numeric(fator_atendimento)), 1)
+
+        cat("Média de pontualidade:", media_pontualidade, "\n")
+        cat("Média de qualidade da comida:", media_qualidade_comida, "\n")
+        cat("Média de atendimento:", media_atendimento, "\n")
+
+        ```
+
+    -   Utilize a função `as.numeric()` para converter as avaliações para o tipo numérico.
+
+        ```{r}
+        media_pontualidade <- round(mean(as.numeric(fator_pontualidade)), 1)
+        media_qualidade_comida <- round(mean(as.numeric(fator_qualidade_comida)), 1)
+        media_atendimento <- round(mean(as.numeric(fator_atendimento)), 1)
+
+        cat("Média de pontualidade:", media_pontualidade, "\n")
+        cat("Média de qualidade da comida:", media_qualidade_comida, "\n")
+        cat("Média de atendimento:", media_atendimento, "\n")
+        ```
+
+    -   Utilize a função `round()` para arredondar o resultado da média para uma casa decimal.
+
+        ```{r}
+        round((media_pontualidade),1)
+        round((media_qualidade_comida),1)
+        round((media_atendimento),1)
+
+        ```
+
+2.  **Categoria com Maior Média:**
+
+    -   Identifique qual categoria recebeu a maior média de avaliação.
+
+        ```{r}
+        categoria_maior_media <- which.max(c(media_pontualidade, media_qualidade_comida, media_atendimento))
+
+        cat("Categoria com maior média de avaliação:", categoria_maior_media, "\n")
+        ```
+
+3.  **Categoria com Menor Média:**
+
+    -   Identifique qual categoria recebeu a menor média de avaliação.
+
+        ```{r}
+        categoria_menor_media <- which.min(c(media_pontualidade, media_qualidade_comida, media_atendimento))
+
+        cat("Categoria com menor média de avaliação:", categoria_menor_media, "\n")
+
+        ```
+
+Em caso de dúvidas sobre a resolução da atividade, consulte a seção “Opinião da pessoa instrutora”.
