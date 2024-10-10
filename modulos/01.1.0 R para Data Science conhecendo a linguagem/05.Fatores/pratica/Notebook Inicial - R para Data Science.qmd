@@ -538,30 +538,3 @@ cont_pendente
 cont_transito
 cont_entregue
 ```
-
-```{r}
-avaliacoes <- c('Bom', 'Ruim', 'Mediano', 'Bom', 'Ruim', 'Mediano', 'Bom', 'Ruim', 'Mediano', 'Bom')
-
-fator_avl <- factor(avaliacoes, ordered = TRUE, levels = c('Ruim', 'Mediano','Bom'))
-
-avaliacoes
-fator_avl
-```
-
-```{r}
-
-contagem_avaliacoes <- c(0, 0, 0)
-
-for (avl in 1:length(fator_avl)) {
-  if (fator_avl[avl] == 'Bom') {
-    contagem_avaliacoes[1] <- contagem_avaliacoes[1] + 1
-  } else if (fator_avl[avl] == 'Mediano') {
-    contagem_avaliacoes[2] <- contagem_avaliacoes[2] + 1
-  } else if (fator_avl[avl] == 'Ruim') {
-    contagem_avaliacoes[3] <- contagem_avaliacoes[3] + 1
-  }
-}
-
-
-contagem_avaliacoes
-```
