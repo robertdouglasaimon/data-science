@@ -19,13 +19,17 @@ url = 'https://raw.githubusercontent.com/alura-cursos/numpy/dados/apples_ts.csv'
 np.arange(1, 88, 1) # Gera uma sequencia de valores.
 
 dado = np.loadtxt(url, delimiter=',',usecols=np.arange(1, 88, 1))
-print(dado)
+# print(dado) 
 
 dado.ndim # Dados em 2 dimensões.
+# print(dado.ndim)
 
 dado.size # Quantidade de elementos.
+# print(dado.size)
 
 dado.shape # 6 linhas e 87 colunas.
+# print(dado.shape)
 
 dado_transposto = dado.T # Transforma linhas em colunas e colunas em linhas.
+# print(dado_transposto)
 
