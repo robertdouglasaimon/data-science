@@ -19,7 +19,7 @@ url = 'https://raw.githubusercontent.com/alura-cursos/numpy/dados/apples_ts.csv'
 np.arange(1, 88, 1) # Gera uma sequencia de valores.
 
 dado = np.loadtxt(url, delimiter=',',usecols=np.arange(1, 88, 1))
-dado
+print(dado)
 
 dado.ndim # Dados em 2 dimensões.
 
