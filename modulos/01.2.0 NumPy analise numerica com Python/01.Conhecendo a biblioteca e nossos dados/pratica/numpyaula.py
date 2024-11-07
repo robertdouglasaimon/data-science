@@ -33,3 +33,4 @@ dado.shape # 6 linhas e 87 colunas.
 dado_transposto = dado.T # Transforma linhas em colunas e colunas em linhas.
 # print(dado_transposto)
 
+
